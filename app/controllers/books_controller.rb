@@ -13,6 +13,7 @@ class BooksController < ApplicationController
      @book_new = Book.new
      @book = Book.find(params[:id])
      @user = @book.user
+     @book_comment = BookComment.new
     #@user = User.find(params[:id])
     #@user = User.find(params[:id])
   end
@@ -60,6 +61,8 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body)
     #params.require(:user).permit(:name, :introduction)
   end
+  
+  
   
   def correct_user
     @book = Book.find(params[:id])

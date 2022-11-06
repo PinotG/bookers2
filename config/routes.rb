@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   #get '/', to: 'home#top', as: 'top'
   #root to: 'home#top'
   root :to => 'home#top'  
-  resources :books, only: [:index, :create, :show, :edit, :destroy, :update] 
+  
+  resources :books, only: [:index, :create, :show, :edit, :destroy, :update] do
+    resources :book_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+  end
   
   resources :users, only: [:index, :show, :edit, :update]
   #get 'home/top'
