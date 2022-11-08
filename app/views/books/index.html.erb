@@ -3,51 +3,7 @@
 
 <div class="col-md-8 offset-md-1">
 <h1>Books</h1>
-<table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Title</th>
-              <th>Opinion</th>
-            </tr>
-          </thead>
-          
-  <% @books.each do |book| %>
-  <tbody>
-      <tr>
-        <td><%= link_to(book.user) do %>
-          <%= image_tag book.user.get_profile_image(100,100) %>
-          <% end %>
-        </td>
-          <td><%= link_to book.title, book_path(book) %></td>
-          <td><%= book.body %></td>
-          
-          <% if book.favorited_by?(current_user) %>
-                        <td>
-                            <%= link_to book_favorites_path(book, redirect_id:0), method: :delete do %>
-                            <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-                            <%= book.favorites.count %>
-                            <% end %>
-                        </td>
-                    <% else %>
-                        <td>
-                            <%= link_to book_favorites_path(book, redirect_id:0), method: :post do %>
-                            <i class="fas fa-heart" aria-hidden="true"></i>
-                            <%= book.favorites.count %>
-                            <% end %>
-                        </td>
-                    <% end %>
-                    
-                    <td>
-                        <div class="comment">
-                                <%= book.book_comments.count %>件コメント
-                           
-                        </div>
-                    </td>
-      </tr>
-  </tbody>
-  <% end %>
-</table>
+<%= render 'books/index',books: @books %>
 </div>
 </div>
 </div>

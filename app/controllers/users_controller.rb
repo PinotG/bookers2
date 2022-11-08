@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @book = Book.new
     @books = @user.books
+    #@book_find = Book.find(params[:id])
   #  @books = @user.books.page(params[:page])
   end
 
